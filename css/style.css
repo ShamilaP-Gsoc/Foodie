@@ -851,19 +851,19 @@ input[type="email"].success {
 /* WHATSAPP FLOATING BUTTON (Mobile-First & Responsive) */
 .whatsapp-fab {
     position: fixed;
-    left: 1rem;  /* Closer to edge on small screens */
-    bottom: 1rem; /* Closer to edge on small screens */
-    width: 2.75rem; /* Slightly smaller on mobile */
+    left: 1rem;  
+    bottom: 1rem; 
+    width: 2.75rem; 
     height: 2.75rem;
     border-radius: 50%;
-    background: #25D366; /* Official WhatsApp Green */
+    background: #25D366; 
     color: #FFFFFF;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.5rem; /* Scaled-down icon for smaller button */
-    box-shadow: 0 4px 10px var(--shadow-strong); /* Using your project's shadow variable */
-    transition: transform var(--transition-normal), box-shadow var(--transition-normal); /* Using your project's transition variable */
+    font-size: 1.5rem; 
+    box-shadow: 0 4px 10px var(--shadow-strong); 
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
     z-index: 10;
     text-decoration: none;
 }
@@ -879,11 +879,11 @@ input[type="email"].success {
 /* 1. Tablet and Desktop screens (768px and up) */
 @media (min-width: 768px) {
     .whatsapp-fab {
-        left: 1.5rem;   /* Restore original spacing */
+        left: 1.5rem;   
         bottom: 1.5rem;
-        width: 3rem;    /* Restore original size */
+        width: 3rem;    
         height: 3rem;
-        font-size: 1.8rem; /* Restore original icon size */
+        font-size: 1.8rem; 
         box-shadow: 0 6px 12px var(--shadow-strong);
     }
 
@@ -900,38 +900,8 @@ input[type="email"].success {
     }
 
     .whatsapp-fab:hover {
-        transform: none; /* Disable hover transform */
+        transform: none; 
         box-shadow: 0 6px 12px var(--shadow-strong);
-    }
-}
-
-/* --- Responsiveness --- */
-
-/* 1. Tablet and Desktop screens (768px and up) */
-@media (min-width: 768px) {
-    .whatsapp-fab {
-        left: 1.5rem;   /* Restore original spacing */
-        bottom: 1.5rem;
-        width: 3rem;    /* Restore original size */
-        height: 3rem;
-        font-size: 1.8rem; /* Restore original icon size */
-        box-shadow: rgba(0, 0, 0, 0.2) 0 6px 12px;
-    }
-
-    .whatsapp-fab:hover {
-        box-shadow: rgba(0, 0, 0, 0.3) 0 8px 16px;
-    }
-}
-
-/* 2. Accessibility: Respect user preference for reduced motion */
-@media (prefers-reduced-motion: reduce) {
-    .whatsapp-fab {
-        transition: none;
-        animation: none;
-    }
-
-    .whatsapp-fab:hover {
-        transform: none; /* Disable hover transform */
     }
 }
 
