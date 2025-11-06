@@ -862,16 +862,47 @@ input[type="email"].success {
     align-items: center;
     justify-content: center;
     font-size: 1.5rem; /* Scaled-down icon for smaller button */
-    box-shadow: rgba(0, 0, 0, 0.2) 0 4px 10px;
-    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px var(--shadow-strong); /* Using your project's shadow variable */
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal); /* Using your project's transition variable */
     z-index: 10;
     text-decoration: none;
 }
 
 .whatsapp-fab:hover {
     transform: scale(1.1) translateY(-2px);
-    box-shadow: rgba(0, 0, 0, 0.3) 0 6px 14px;
+    box-shadow: 0 6px 14px var(--shadow-strong);
     color: #FFFFFF;
+}
+
+/* --- Responsiveness --- */
+
+/* 1. Tablet and Desktop screens (768px and up) */
+@media (min-width: 768px) {
+    .whatsapp-fab {
+        left: 1.5rem;   /* Restore original spacing */
+        bottom: 1.5rem;
+        width: 3rem;    /* Restore original size */
+        height: 3rem;
+        font-size: 1.8rem; /* Restore original icon size */
+        box-shadow: 0 6px 12px var(--shadow-strong);
+    }
+
+    .whatsapp-fab:hover {
+        box-shadow: 0 8px 16px var(--shadow-strong);
+    }
+}
+
+/* 2. Accessibility: Respect user preference for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .whatsapp-fab {
+        transition: none;
+        animation: none;
+    }
+
+    .whatsapp-fab:hover {
+        transform: none; /* Disable hover transform */
+        box-shadow: 0 6px 12px var(--shadow-strong);
+    }
 }
 
 /* --- Responsiveness --- */
