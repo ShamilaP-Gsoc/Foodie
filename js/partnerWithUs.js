@@ -1,6 +1,5 @@
-// Partner With Us – Complete Fixed Script
-// FULL FILE (ready to paste)
-// Validation + Whitespace Trim + Fake Backend + Success Toast
+// Partner With Us – Complete Production Script
+// Validation + Whitespace Trim + Inline Errors + Real Backend + Success Toast
 
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.querySelector(".partner-form");
@@ -8,10 +7,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (!form || !toast) return;
 
-    // Disable native browser tooltips (we use custom validation)
+    // Disable native HTML5 tooltips
     form.noValidate = true;
 
-    // Required fields
+    // Required fields list
     const requiredFields = [
         "restaurantName",
         "ownerName",
@@ -21,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
         "cuisine"
     ];
 
-    // Clear previous inline errors
+    // Remove old inline error messages
     function clearErrors() {
         form.querySelectorAll(".field-error").forEach(el => el.remove());
         form.querySelectorAll("[aria-invalid='true']").forEach(el => {
@@ -30,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Show an inline error under a field
+    // Show error under a field
     function showFieldError(field, message) {
         field.setAttribute("aria-invalid", "true");
         field.setCustomValidity(message);
@@ -45,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
         field.insertAdjacentElement("afterend", error);
     }
 
-    // Trim values from form
+    // Collect & trim form data
     function getTrimmedData() {
         const data = {};
         new FormData(form).forEach((value, key) => {
@@ -54,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return data;
     }
 
-    // Validate required fields
+    // Field validation
     function validateForm(data) {
         let valid = true;
 
@@ -62,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const field = form.querySelector(`[name="${name}"]`);
             const value = data[name];
 
-            if (!value || value.trim().length === 0) {
+            if (!value || value.length === 0) {
                 showFieldError(field, "This field is required");
                 valid = false;
             }
@@ -71,44 +70,50 @@ document.addEventListener("DOMContentLoaded", function () {
         return valid;
     }
 
-    // Show success toast
+    // Success toast
     function showToast() {
         toast.classList.add("show");
         setTimeout(() => toast.classList.remove("show"), 2000);
     }
 
-    // Fake backend so success works without server
-    async function sendFakeSuccess() {
-        return new Response(
-            JSON.stringify({ ok: true }),
-            { status: 200, headers: { "Content-Type": "application/json" } }
-        );
+    // REAL backend API request
+    async function sendRealRequest(payload) {
+        const endpoint = form.getAttribute("action")?.trim() || "/api/partners";
+
+        return fetch(endpoint, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            credentials: "same-origin",
+            body: JSON.stringify(payload)
+        });
     }
 
-    // On submit
+    // Form submit
     form.addEventListener("submit", async function (e) {
         e.preventDefault();
         clearErrors();
 
         const data = getTrimmedData();
 
-        // Validation
-        if (!validateForm(data)) {
-            return;
-        }
+        // Validate
+        if (!validateForm(data)) return;
 
-        // Simulated backend (works without server!)
-        const resp = await sendFakeSuccess();
+        // Real backend request
+        const resp = await sendRealRequest(data);
 
         if (resp.ok) {
             form.reset();
             showToast();
         } else {
-            console.warn("Submission failed (simulated)");
+            console.warn("Server rejected submission:", resp.status);
+            showFieldError(
+                form.querySelector("[name='email']"),
+                "Submission failed. Please try again."
+            );
         }
     });
 
-    // Force caret visibility on click (fix invisible cursor bug)
+    // Fix invisible caret issue (focus on click)
     form.querySelectorAll("input, textarea").forEach(el => {
         el.addEventListener("mousedown", ev => {
             ev.preventDefault();
