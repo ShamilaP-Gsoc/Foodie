@@ -112,7 +112,7 @@
 
   <!-- MAIN -->
   <main>
-    <section class="wrapper p-top" data-aos="fade-up">
+    <section id="home" class="wrapper p-top" data-aos="fade-up">
       <div class="text-center">
         <h5>Discover Nearby</h5>
         <h2>Top Rated Restaurants Around You 🍴</h2>
@@ -169,6 +169,20 @@
   <script src="../js/cursor.js"></script>
   <script src="../js/footer.js"></script>
   <script> AOS.init({ duration: 1000, easing: 'ease-out', once: true }); </script>
+  <script>
+    (function () {
+            const backToTop = document.querySelector('.back-to-top');
+            if (!backToTop) return;
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 400) backToTop.classList.add('visible');
+                else backToTop.classList.remove('visible');
+            });
+            backToTop.addEventListener('click', e => {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        })();
+  </script>
 </body>
 
 </html>

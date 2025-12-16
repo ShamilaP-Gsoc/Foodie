@@ -88,13 +88,28 @@ document.addEventListener('click', (e) => {
 // ===== BACK TO TOP BUTTON =====
 const backToTop = document.querySelector('.back-to-top');
 
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 300) {
-    backToTop.classList.add('visible');
-  } else {
-    backToTop.classList.remove('visible');
-  }
-});
+// Guard: only run behavior when element exists
+if (backToTop) {
+  // show/hide when user scrolls
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+      backToTop.classList.add('visible');
+    } else {
+      backToTop.classList.remove('visible');
+    }
+  });
+
+  // click/keyboard to scroll to top
+  const scrollToTop = (e) => {
+    if (e) e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  backToTop.addEventListener('click', scrollToTop);
+  backToTop.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') scrollToTop(e);
+  });
+}
 
 // ===== RESTAURANT DATA & RENDERING =====
 const restaurants = [
