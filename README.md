@@ -19,11 +19,11 @@
 - [Getting Started](#getting-started)
 - [Chrome Extension](#chrome-extension)
 - [Google Analytics Setup](#google-analytic-setup)
-- [Deployment (GitHub Pages)](#deployement)
-- [Commnad for Running Tests](#command-for-running-tests)
+- [Deployment (GitHub Pages)](#deployement-github-pages)
+- [Command for Running Tests](#command-for-running-tests)
 - [Contributing](#contributing)
 - [License](#license)
-- [Connect with Maintainer](#connect-with-maintainer)
+- [Connect with the Maintainer](#connect-with-the-maintainer)
 
   
 ## 🧁 Overview
