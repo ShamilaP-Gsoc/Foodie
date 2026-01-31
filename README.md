@@ -10,6 +10,22 @@
 
 <img src="https://github.com/Mayur-Pagote/README_Design_Kit/blob/730d340c8008758ac291ebc555f818f851feda0f/Assets/RGB%20Line%20Thick.gif" width="100%" />
 
+## Table of Contents
+
+- [Overview](#overview)
+- [Tech Stack](#tech-stack)
+- [Key Features](#key-features)
+- [Folder Structure](#folder-structure)
+- [Getting Started](#getting-started)
+- [Chrome Extension](#chrome-extension)
+- [Google Analytics Setup](#google-analytic-setup)
+- [Deployment](#deployement)
+- [Running Tests](#running-tests)
+- [Contributing](#contributing)
+- [License](#license)
+- [Connect with Maintainer](#connect-with-maintainer)
+
+  
 ## 🧁 Overview
 
 **Foodie** is a sleek, **responsive food delivery web app** built using **HTML5**, **CSS**, and **JavaScript**.
