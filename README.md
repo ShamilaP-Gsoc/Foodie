@@ -12,7 +12,7 @@
 
 ## Table of Contents
 
-- [Overview](#overview)
+- [Overview](#-🧁-overview)
 - [Tech Stack](#tech-stack)
 - [Key Features](#key-features)
 - [Folder Structure](#folder-structure)
